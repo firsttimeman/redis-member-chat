@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: redis-member-chat
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/member_chat?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=utf8}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: ${DB_DRIVER_CLASS_NAME:com.mysql.cj.jdbc.Driver}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+server:
+  port: ${SERVER_PORT:8080}
+
+chat:
+  redis:
+    topic: ${CHAT_REDIS_TOPIC:chatroom}
